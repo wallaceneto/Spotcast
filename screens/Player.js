@@ -118,7 +118,7 @@ Controls.Slider.TotalTime = styled.Text`
 export default function PlayerScreen() {
   const [segundos, setSegundos] = useState(0);
 
-  const initTime = (valor) => {
+  const playerTime = valor => {
       let tempo = (valor.toString()).split('.').join(':');
       return tempo;
   }
@@ -164,8 +164,8 @@ export default function PlayerScreen() {
                         thumbTintColor="#ffffff"
                         minimumTrackTintColor="#1dd65f"
                         maximumTrackTintColor="#777777"
-                        minimumValue={0}
-                        maximumValue={53}
+                        minimumValue={0.00}
+                        maximumValue={53.00}
                         value={segundos}
                         onValueChange={value => {
                             setSegundos(Math.round(value*100)/100);
@@ -174,7 +174,7 @@ export default function PlayerScreen() {
 
                     <Controls.Slider>
                         <Controls.Slider.CurrentTime>
-                            {initTime(segundos)}
+                            {playerTime(segundos)}
                         </Controls.Slider.CurrentTime>
                         <Controls.Slider.TotalTime>
                             53:00
